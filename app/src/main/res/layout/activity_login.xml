@@ -55,10 +55,9 @@
 
     <TextView
             android:id="@+id/changeToRegisterActivityButton"
-            android:text="Already have an account?"
+            android:text="Create a new account"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:textStyle="italic"
             android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
