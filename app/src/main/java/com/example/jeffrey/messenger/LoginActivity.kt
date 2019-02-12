@@ -3,6 +3,7 @@ package com.example.jeffrey.messenger
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,12 +13,29 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         loginButton.setOnClickListener {
-            Toast.makeText(this@LoginActivity, "Username: ${usernameRegistrationText.text}\n" +
-                    "Password: ${passwordRegistrationText.text}", Toast.LENGTH_SHORT).show()
+            loginUser()
         }
 
         changeToRegisterActivityButton.setOnClickListener {
             finish()
         }
+    }
+
+    private fun loginUser() {
+        val email = emailLoginText.text.toString()
+        val password = passwordLoginText.text.toString()
+
+        if(email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter email/password", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            .addOnSuccessListener {
+                // TODO: implement
+            }
+            .addOnFailureListener {
+                // TODO: implement
+            }
     }
 }
