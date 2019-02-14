@@ -4,10 +4,26 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:background="@color/backgroundColor"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".RegisterActivity">
+
+    <Button
+            android:id="@+id/selectPhotoButton"
+            android:text="Select Photo"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:background="@drawable/circular_button"
+            android:paddingTop="72dp"
+            android:paddingBottom="72dp"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText"/>
 
     <EditText
             android:id="@+id/usernameRegistrationText"
