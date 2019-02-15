@@ -1,7 +1,9 @@
 package com.example.jeffrey.messenger
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -31,10 +33,14 @@ class LoginActivity : AppCompatActivity() {
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                // TODO: implement
+                Log.d("Jeffrey", "Successfully logged in as user: ${it.user.uid}")
+
+                val intent = Intent(this, MessageFeedActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
             }
             .addOnFailureListener {
-                // TODO: implement
+                Log.d("Jeffrey", "Failed to log in as user: ${it.message}")
             }
     }
 }

@@ -22,10 +22,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         selectPhotoButton.setOnClickListener {
-            startActivityForResult(
-                Intent(Intent.ACTION_PICK).setType("image/*"),
-                0
-            )
+            startActivityForResult(Intent(Intent.ACTION_PICK).setType("image/*"), 0)
         }
 
         registrationButton.setOnClickListener {
@@ -102,6 +99,10 @@ class RegisterActivity : AppCompatActivity() {
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("Jeffrey", "Successfully saved user to database")
+
+                val intent = Intent(this, MessageFeedActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
             }
             .addOnFailureListener {
                 Log.d("Jeffrey", "Failed to save user to database: ${it.message}")
