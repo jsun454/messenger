@@ -21,6 +21,8 @@ class RegisterActivity : AppCompatActivity() {
         private val TAG = RegisterActivity::class.java.simpleName
     }
 
+    class User(val uid: String, val username: String, val profileImageUrl: String)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -114,5 +116,3 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 }
-
-class User(val uid: String, val username: String, val profileImageUrl: String)
