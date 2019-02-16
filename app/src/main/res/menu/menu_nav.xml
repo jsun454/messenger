@@ -11,7 +11,7 @@
             tools:ignore="HardcodedText"/>
 
     <item
-            android:id="@+id/log_out"
+            android:id="@+id/logout"
             android:title="Log Out"
             app:showAsAction="ifRoom"
             tools:ignore="HardcodedText"/>
