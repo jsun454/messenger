@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import com.example.jeffrey.messenger.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -21,21 +22,19 @@ class RegisterActivity : AppCompatActivity() {
         private val TAG = RegisterActivity::class.java.simpleName
     }
 
-    class User(val uid: String, val username: String, val profileImageUrl: String)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        selectPhotoButton.setOnClickListener {
+        activity_register_btn_select_photo.setOnClickListener {
             startActivityForResult(Intent(Intent.ACTION_PICK).setType("image/*"), 0)
         }
 
-        registrationButton.setOnClickListener {
+        activity_register_btn_register.setOnClickListener {
             registerUser()
         }
 
-        changeToLoginActivityButton.setOnClickListener {
+        activity_register_txt_go_login.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
     }
@@ -51,15 +50,15 @@ class RegisterActivity : AppCompatActivity() {
             photoUri = data.data
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, photoUri)
 
-            selectPhotoImageView.setImageBitmap(bitmap)
-            selectPhotoButton.background.alpha = 0
-            selectPhotoButton.text = "Change Photo"
+            activity_register_img_user_picture.setImageBitmap(bitmap)
+            activity_register_btn_select_photo.background.alpha = 0
+            activity_register_btn_select_photo.text = "Change Photo"
         }
     }
 
     private fun registerUser() {
-        val email = emailRegistrationText.text.toString()
-        val password = passwordRegistrationText.text.toString()
+        val email = activity_register_et_email.text.toString()
+        val password = activity_register_et_password.text.toString()
 
         if(email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter email/password", Toast.LENGTH_SHORT).show()
@@ -99,7 +98,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun saveUser(profileImageUrl: String) {
         val uid = FirebaseAuth.getInstance().uid ?: ""
-        val username = usernameRegistrationText.text.toString()
+        val username = activity_register_et_username.text.toString()
         val user = User(uid, username, profileImageUrl)
 
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")

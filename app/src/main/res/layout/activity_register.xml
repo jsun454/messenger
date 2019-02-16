@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_height="182dp">
 
         <Button
-                android:id="@+id/selectPhotoButton"
+                android:id="@+id/activity_register_btn_select_photo"
                 android:text="Select Photo"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
@@ -26,7 +26,7 @@
                 tools:ignore="HardcodedText"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/selectPhotoImageView"
+                android:id="@+id/activity_register_img_user_picture"
                 android:clickable="false"
                 android:focusable="false"
                 android:layout_width="match_parent"
@@ -37,7 +37,7 @@
     </FrameLayout>
 
     <EditText
-            android:id="@+id/usernameRegistrationText"
+            android:id="@+id/activity_register_et_username"
             android:inputType="textPersonName"
             android:hint="Username"
             android:ems="10"
@@ -52,7 +52,7 @@
             tools:ignore="Autofill, HardcodedText"/>
 
     <EditText
-            android:id="@+id/emailRegistrationText"
+            android:id="@+id/activity_register_et_email"
             android:inputType="textEmailAddress"
             android:hint="Email"
             android:ems="10"
@@ -67,7 +67,7 @@
             tools:ignore="Autofill, HardcodedText"/>
 
     <EditText
-            android:id="@+id/passwordRegistrationText"
+            android:id="@+id/activity_register_et_password"
             android:inputType="textPassword"
             android:hint="Password"
             android:ems="10"
@@ -82,7 +82,7 @@
             tools:ignore="Autofill, HardcodedText"/>
 
     <Button
-            android:id="@+id/registrationButton"
+            android:id="@+id/activity_register_btn_register"
             android:text="Register"
             android:textColor="@android:color/white"
             android:textSize="16sp"
@@ -97,7 +97,7 @@
             tools:ignore="HardcodedText"/>
 
     <TextView
-            android:id="@+id/changeToLoginActivityButton"
+            android:id="@+id/activity_register_txt_go_login"
             android:text="Already have an account?"
             android:textColor="@android:color/white"
             android:textSize="16sp"

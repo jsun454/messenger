@@ -18,18 +18,18 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loginButton.setOnClickListener {
+        activity_login_btn_login.setOnClickListener {
             loginUser()
         }
 
-        changeToRegisterActivityButton.setOnClickListener {
+        activity_login_txt_go_register.setOnClickListener {
             finish()
         }
     }
 
     private fun loginUser() {
-        val email = emailLoginText.text.toString()
-        val password = passwordLoginText.text.toString()
+        val email = activity_login_et_email.text.toString()
+        val password = activity_login_et_password.text.toString()
 
         if(email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter email/password", Toast.LENGTH_SHORT).show()
