@@ -13,6 +13,8 @@ class MessageFeedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message_feed)
 
+        supportActionBar?.title = "Select Recipient"
+
         verifyUserLoggedIn()
     }
 
