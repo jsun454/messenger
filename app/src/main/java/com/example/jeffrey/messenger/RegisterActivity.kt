@@ -16,6 +16,9 @@ import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
+    companion object {
+        private val TAG = RegisterActivity::class.java.simpleName
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    var photoUri: Uri? = null
+    private var photoUri: Uri? = null
 
     @SuppressLint("SetTextI18n")
     @Suppress("DEPRECATION")
@@ -62,11 +65,12 @@ class RegisterActivity : AppCompatActivity() {
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                Log.d("Jeffrey", "Successfully created user with ID: ${it.user.uid}")
+                Log.i(TAG, "Successfully created user with ID: ${it.user.uid}")
                 storeImage()
             }
             .addOnFailureListener {
-                Log.d("Jeffrey", "Failed to create user: ${it.message}")
+                Log.w(TAG, "Failed to create user: ${it.message}")
+                Toast.makeText(this, "Registration failed: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -79,14 +83,14 @@ class RegisterActivity : AppCompatActivity() {
         val ref = FirebaseStorage.getInstance().getReference("/images/$image")
         ref.putFile(photoUri!!)
             .addOnSuccessListener {
-                Log.d("Jeffrey", "Successfully uploaded image: ${it.metadata?.path}")
+                Log.i(TAG, "Successfully uploaded image: ${it.metadata?.path}")
                 ref.downloadUrl.addOnSuccessListener { uri ->
-                    Log.d("Jeffrey", "Image file location: $uri")
+                    Log.i(TAG, "Image file location: $uri")
                     saveUser(uri.toString())
                 }
             }
             .addOnFailureListener {
-                Log.d("Jeffrey", "Failed to upload image: ${it.message}")
+                Log.e(TAG, "Failed to upload image: ${it.message}")
             }
     }
 
@@ -98,14 +102,14 @@ class RegisterActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
         ref.setValue(user)
             .addOnSuccessListener {
-                Log.d("Jeffrey", "Successfully saved user to database")
+                Log.i(TAG, "Successfully saved user to database")
 
                 val intent = Intent(this, MessageFeedActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }
             .addOnFailureListener {
-                Log.d("Jeffrey", "Failed to save user to database: ${it.message}")
+                Log.e(TAG, "Failed to save user to database: ${it.message}")
             }
     }
 }
