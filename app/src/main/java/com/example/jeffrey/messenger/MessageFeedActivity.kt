@@ -8,9 +8,6 @@ import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 
 class MessageFeedActivity : AppCompatActivity() {
-    companion object {
-        private val TAG = MessageFeedActivity::class.java.simpleName
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +24,7 @@ class MessageFeedActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             R.id.new_message -> {
-
+                startActivity(Intent(this, NewMessageActivity::class.java))
             }
             R.id.logout -> {
                 FirebaseAuth.getInstance().signOut()

@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
+
     companion object {
         private val TAG = RegisterActivity::class.java.simpleName
     }

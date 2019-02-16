@@ -11,21 +11,34 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             tools:ignore="AllowBackup, GoogleAppIndexingWarning">
-        <activity android:name=".NewMessageActivity">
-        </activity>
+
         <activity
                 android:name=".MessageFeedActivity"
                 android:label="Messages"
                 android:theme="@style/ActionBarTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
+
+        <activity
+                android:name=".NewMessageActivity"
+                android:label="Select Recipient"
+                android:theme="@style/ActionBarTheme">
+
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".MessageFeedActivity"/>
+
+        </activity>
+
         <activity
                 android:name=".RegisterActivity"
                 android:theme="@style/BaseAppTheme"/>
+
         <activity
                 android:name=".LoginActivity"
                 android:theme="@style/BaseAppTheme"/>

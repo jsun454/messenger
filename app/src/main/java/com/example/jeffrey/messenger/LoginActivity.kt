@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
+
     companion object {
         private val TAG = LoginActivity::class.java.simpleName
     }
