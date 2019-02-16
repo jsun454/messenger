@@ -13,7 +13,7 @@ class MessageFeedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message_feed)
 
-        supportActionBar?.title = "Select Recipient"
+        supportActionBar?.title = "Messages"
 
         verifyUserLoggedIn()
     }
@@ -30,7 +30,7 @@ class MessageFeedActivity : AppCompatActivity() {
             }
             R.id.logout -> {
                 FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, RegisterActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
             }

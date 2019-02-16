@@ -62,11 +62,15 @@ class RegisterActivity : AppCompatActivity() {
         if(email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter email/password", Toast.LENGTH_SHORT).show()
             return
+        } else if(photoUri == null) {
+            Toast.makeText(this, "Please add a photo", Toast.LENGTH_SHORT).show()
+            return
         }
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 Log.i(TAG, "Successfully created user with ID: ${it.user.uid}")
+                Toast.makeText(this, "Creating user...", Toast.LENGTH_SHORT).show()
                 storeImage()
             }
             .addOnFailureListener {
@@ -76,10 +80,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun storeImage() {
-        if(photoUri == null) {
-            return
-        }
-
         val image = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$image")
         ref.putFile(photoUri!!)
