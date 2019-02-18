@@ -1,5 +1,6 @@
 package com.example.jeffrey.messenger
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jeffrey.messenger.model.User
@@ -37,6 +38,12 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
                 }
+
+                adapter.setOnItemClickListener { item, view ->
+                    startActivity(Intent(view.context, DirectMessageActivity::class.java))
+                    finish()
+                }
+
                 newMessageRecyclerView.adapter = adapter
             }
 
