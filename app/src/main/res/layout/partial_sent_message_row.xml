@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="horizontal"
+        android:gravity="end|top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <Button
+            android:id="@+id/partial_sent_message_row_other_user_message"
+            android:text="Test message for direct message activity layout"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:background="@drawable/btn_rounded"
+            android:gravity="start"
+            android:paddingTop="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:background="@drawable/btn_circle"
+            android:id="@+id/partial_sent_message_row_other_user_image"
+            android:layout_margin="8dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/colorAccent"/>
+
+</LinearLayout>
