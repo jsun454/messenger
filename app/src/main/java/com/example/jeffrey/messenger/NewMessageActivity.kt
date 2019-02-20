@@ -14,6 +14,9 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_new_message.*
 
 class NewMessageActivity : AppCompatActivity() {
+    companion object {
+        const val USER_KEY = "USER_KEY"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +43,9 @@ class NewMessageActivity : AppCompatActivity() {
                 }
 
                 adapter.setOnItemClickListener { item, view ->
-                    startActivity(Intent(view.context, DirectMessageActivity::class.java))
+                    val intent = Intent(view.context, DirectMessageActivity::class.java)
+                    intent.putExtra(USER_KEY, (item as UserItem).user)
+                    startActivity(intent)
                     finish()
                 }
 
