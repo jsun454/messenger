@@ -5,4 +5,8 @@
     <color name="colorAccent">#0088BB</color>
     <color name="windowBackground">#00BBEE</color>
     <color name="textColorPrimary">#000000</color>
+
+    <color name="colorAlt">#DCDCDC</color>
+    <color name="textColorAlt">#FFFFFF</color>
+    <color name="windowBackgroundAlt">#FFFFFF</color>
 </resources>

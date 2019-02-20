@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/newMessageRecyclerView"
-        android:background="@android:color/white"
+        android:background="@color/windowBackgroundAlt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"

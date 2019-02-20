@@ -18,7 +18,7 @@
         <Button
                 android:id="@+id/activity_register_btn_select_photo"
                 android:text="Select Photo"
-                android:textColor="@android:color/white"
+                android:textColor="@color/textColorAlt"
                 android:textSize="16sp"
                 android:background="@drawable/btn_circle"
                 android:layout_width="match_parent"
@@ -81,7 +81,7 @@
     <Button
             android:id="@+id/activity_register_btn_register"
             android:text="Register"
-            android:textColor="@android:color/white"
+            android:textColor="@color/windowBackgroundAlt"
             android:textSize="16sp"
             android:background="@drawable/btn_rounded"
             android:padding="8dp"
@@ -96,7 +96,7 @@
     <TextView
             android:id="@+id/activity_register_txt_go_login"
             android:text="Already have an account?"
-            android:textColor="@android:color/white"
+            android:textColor="@color/textColorAlt"
             android:textSize="16sp"
             android:textStyle="italic"
             android:layout_marginTop="4dp"
