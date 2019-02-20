@@ -68,6 +68,7 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
+        activity_register_btn_register.isClickable = false
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 Log.i(TAG, "Successfully created user with ID: ${it.user.uid}")
@@ -77,6 +78,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.w(TAG, "Failed to create user: ${it.message}")
                 Toast.makeText(this, "Registration failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                activity_register_btn_register.isClickable = true
             }
     }
 

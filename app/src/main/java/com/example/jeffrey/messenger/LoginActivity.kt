@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
+        activity_login_btn_login.isClickable = false
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 Log.i(TAG, "Successfully logged in as user: ${it.user.uid}")
@@ -47,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.w(TAG, "Failed to log in as user: ${it.message}")
                 Toast.makeText(this, "Login failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                activity_login_btn_login.isClickable = true
             }
     }
 }
