@@ -22,7 +22,7 @@
             android:id="@+id/partial_received_message_row_other_user_message"
             android:textAllCaps="false"
             android:textColor="@color/textColorPrimary"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:background="@drawable/btn_rounded_alt"
             android:gravity="start"
             android:paddingTop="8dp"
