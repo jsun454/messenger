@@ -68,6 +68,7 @@ class DirectMessageActivity : AppCompatActivity() {
         ref.setValue(message)
             .addOnSuccessListener {
                 Log.i(TAG, "Successfully saved message to database")
+                activity_direct_message_et_user_message.setText("")
             }
             .addOnFailureListener {
                 Log.e(TAG, "Failed to save message to database: ${it.message}")
