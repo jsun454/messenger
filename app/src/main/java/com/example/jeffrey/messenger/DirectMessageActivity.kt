@@ -32,7 +32,6 @@ class DirectMessageActivity : AppCompatActivity() {
         supportActionBar?.title = otherUser?.username ?: "Chat"
 
         activity_direct_message_rv_message_list.adapter = adapter
-
         listenForMessages()
 
         activity_direct_message_btn_send.setOnClickListener {
@@ -41,7 +40,9 @@ class DirectMessageActivity : AppCompatActivity() {
     }
 
     private fun listenForMessages() {
-        val ref = FirebaseDatabase.getInstance().getReference("/messages")
+        val fromId = FirebaseAuth.getInstance().uid ?: return
+        val toId = otherUser?.uid ?: return
+        val ref = FirebaseDatabase.getInstance().getReference("/messages/$fromId/$toId")
         ref.addChildEventListener(object: ChildEventListener {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val message = p0.getValue(DirectMessage::class.java) ?: return
@@ -51,6 +52,7 @@ class DirectMessageActivity : AppCompatActivity() {
                 } else {
                     adapter.add(ReceivedMessageItem(message.message, otherUser ?: return))
                 }
+                activity_direct_message_rv_message_list.scrollToPosition(adapter.itemCount - 1)
             }
 
             override fun onCancelled(p0: DatabaseError) {}
@@ -61,16 +63,34 @@ class DirectMessageActivity : AppCompatActivity() {
     }
 
     private fun sendMessage() {
-        val ref = FirebaseDatabase.getInstance().getReference("/messages").push()
-        val fromId = FirebaseAuth.getInstance().uid ?: return
-        val recipient = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
-        val toId = recipient.uid
         val text = activity_direct_message_et_user_message.text.toString()
+        if(text.isEmpty()) {
+            return
+        }
+
+        val fromId = FirebaseAuth.getInstance().uid ?: return
+        val toId = otherUser?.uid ?: return
+
+        val ref = FirebaseDatabase.getInstance().getReference("/messages/$fromId/$toId").push()
+        val otherRef = FirebaseDatabase.getInstance().getReference("/messages/$toId/$fromId").push()
+
         val message = DirectMessage(ref.key!!, fromId, toId, text, System.currentTimeMillis())
+
         ref.setValue(message)
             .addOnSuccessListener {
                 Log.i(TAG, "Successfully saved message to database")
-                activity_direct_message_et_user_message.setText("")
+                activity_direct_message_et_user_message.text.clear()
+                activity_direct_message_rv_message_list.scrollToPosition(adapter.itemCount - 1)
+            }
+            .addOnFailureListener {
+                Log.e(TAG, "Failed to save message to database: ${it.message}")
+            }
+
+        otherRef.setValue(message)
+            .addOnSuccessListener {
+                Log.i(TAG, "Successfully saved message to database")
+                activity_direct_message_et_user_message.text.clear()
+                activity_direct_message_rv_message_list.scrollToPosition(adapter.itemCount - 1)
             }
             .addOnFailureListener {
                 Log.e(TAG, "Failed to save message to database: ${it.message}")
