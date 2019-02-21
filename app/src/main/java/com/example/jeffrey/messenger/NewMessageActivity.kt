@@ -30,9 +30,6 @@ class NewMessageActivity : AppCompatActivity() {
     private fun fetchUsers() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
-
             override fun onDataChange(p0: DataSnapshot) {
                 val adapter = GroupAdapter<ViewHolder>()
                 p0.children.forEach {
@@ -51,6 +48,8 @@ class NewMessageActivity : AppCompatActivity() {
 
                 newMessageRecyclerView.adapter = adapter
             }
+
+            override fun onCancelled(p0: DatabaseError) {}
         })
     }
 }

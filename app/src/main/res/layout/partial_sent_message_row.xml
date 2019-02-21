@@ -12,7 +12,7 @@
             android:layout_height="0dp"/>
 
     <TextView
-            android:id="@+id/partial_sent_message_row_other_user_message"
+            android:id="@+id/partial_sent_message_row_user_message"
             android:textAllCaps="false"
             android:textColor="@color/textColorAlt"
             android:textSize="16sp"
@@ -31,7 +31,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
             android:background="@drawable/btn_circle"
-            android:id="@+id/partial_sent_message_row_other_user_image"
+            android:id="@+id/partial_sent_message_row_user_image"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"

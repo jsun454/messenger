@@ -22,13 +22,14 @@ class DirectMessageActivity : AppCompatActivity() {
     }
 
     private val adapter = GroupAdapter<ViewHolder>()
+    private var otherUser: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_direct_message)
 
-        val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
-        supportActionBar?.title = user.username
+        otherUser = intent.getParcelableExtra(NewMessageActivity.USER_KEY)
+        supportActionBar?.title = otherUser?.username ?: "Chat"
 
         activity_direct_message_rv_message_list.adapter = adapter
 
@@ -45,9 +46,10 @@ class DirectMessageActivity : AppCompatActivity() {
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 val message = p0.getValue(DirectMessage::class.java) ?: return
                 if(message.fromId == FirebaseAuth.getInstance().uid) {
-                    adapter.add(SentMessageItem(message.message))
+                    val user = MessageFeedActivity.user ?: return
+                    adapter.add(SentMessageItem(message.message, user))
                 } else {
-                    adapter.add(ReceivedMessageItem(message.message))
+                    adapter.add(ReceivedMessageItem(message.message, otherUser ?: return))
                 }
             }
 
