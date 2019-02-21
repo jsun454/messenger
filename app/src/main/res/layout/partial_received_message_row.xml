@@ -20,7 +20,6 @@
 
     <TextView
             android:id="@+id/partial_received_message_row_other_user_message"
-            android:text="Short test"
             android:textAllCaps="false"
             android:textColor="@color/textColorPrimary"
             android:textSize="16sp"

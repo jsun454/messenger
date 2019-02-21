@@ -7,7 +7,6 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.partial_recipient_row.view.*
 
 class UserItem(val user: User): Item<ViewHolder>() {
-
     override fun getLayout(): Int {
         return R.layout.partial_recipient_row
     }
