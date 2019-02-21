@@ -33,10 +33,8 @@ class NewMessageActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 val adapter = GroupAdapter<ViewHolder>()
                 p0.children.forEach {
-                    val user = it.getValue(User::class.java)
-                    if(user != null) {
-                        adapter.add(UserItem(user))
-                    }
+                    val user = it.getValue(User::class.java) ?: return@forEach
+                    adapter.add(UserItem(user))
                 }
 
                 adapter.setOnItemClickListener { item, view ->

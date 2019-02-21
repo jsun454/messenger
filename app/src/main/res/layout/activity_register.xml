@@ -25,7 +25,7 @@
                     android:text="Select Photo"
                     android:textColor="@color/textColorAlt"
                     android:textSize="16sp"
-                    android:background="@drawable/btn_circle"
+                    android:background="@drawable/btn_circle_dark_blue"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:ignore="HardcodedText"/>
@@ -88,7 +88,7 @@
                 android:text="Register"
                 android:textColor="@color/windowBackgroundAlt"
                 android:textSize="16sp"
-                android:background="@drawable/btn_rounded"
+                android:background="@drawable/btn_rounded_dark_blue"
                 android:padding="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
