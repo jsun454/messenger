@@ -8,8 +8,8 @@
         android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-            android:background="@drawable/btn_circle_gray"
             android:id="@+id/partial_received_message_row_other_user_image"
+            android:background="@drawable/btn_circle_gray"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"

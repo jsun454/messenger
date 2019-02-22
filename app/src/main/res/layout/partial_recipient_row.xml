@@ -9,8 +9,6 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/partial_recipient_row_img_user_picture"
-            android:clickable="false"
-            android:focusable="false"
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
