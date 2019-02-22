@@ -8,5 +8,6 @@
 
     <color name="colorAlt">#DCDCDC</color>
     <color name="textColorAlt">#FFFFFF</color>
+    <color name="textColorGray">#808080</color>
     <color name="windowBackgroundAlt">#FFFFFF</color>
 </resources>

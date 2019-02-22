@@ -6,12 +6,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.example.jeffrey.messenger.model.MessageFeedItem
 import com.example.jeffrey.messenger.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_message_feed.*
 
 class MessageFeedActivity : AppCompatActivity() {
 
@@ -28,6 +32,14 @@ class MessageFeedActivity : AppCompatActivity() {
 
         verifyUserLoggedIn()
         fetchUser()
+
+        /*TEST*/
+        val adapter = GroupAdapter<ViewHolder>()
+        adapter.add(MessageFeedItem())
+        adapter.add(MessageFeedItem())
+        adapter.add(MessageFeedItem())
+        activity_message_feed_rv_message_list.adapter = adapter
+        /*TEST*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

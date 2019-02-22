@@ -19,7 +19,7 @@ class ReceivedMessageItem(private val message: String, private val user: User): 
     }
 }
 
-class SentMessageItem(private val message: String, val user: User): Item<ViewHolder>() {
+class SentMessageItem(private val message: String, private val user: User): Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.partial_sent_message_row
     }
