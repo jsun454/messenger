@@ -1,6 +1,8 @@
-package com.example.jeffrey.messenger.model
+package com.example.jeffrey.messenger.view
 
 import com.example.jeffrey.messenger.R
+import com.example.jeffrey.messenger.model.DirectMessage
+import com.example.jeffrey.messenger.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -10,7 +12,6 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.partial_latest_message_row.view.*
-import java.util.*
 
 class MessageFeedItem(private val message: DirectMessage): Item<ViewHolder>() {
     override fun getLayout(): Int {

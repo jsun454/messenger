@@ -4,7 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jeffrey.messenger.model.User
-import com.example.jeffrey.messenger.model.UserItem
+import com.example.jeffrey.messenger.view.UserItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -18,11 +18,15 @@ class NewMessageActivity : AppCompatActivity() {
         const val USER_KEY = "USER_KEY"
     }
 
+    val adapter = GroupAdapter<ViewHolder>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
 
         supportActionBar?.title = "Select Recipient"
+
+        activity_new_message_rv_user_list.adapter = adapter
 
         fetchUsers()
     }
@@ -31,7 +35,6 @@ class NewMessageActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                val adapter = GroupAdapter<ViewHolder>()
                 p0.children.forEach {
                     val user = it.getValue(User::class.java) ?: return@forEach
                     adapter.add(UserItem(user))
@@ -43,8 +46,6 @@ class NewMessageActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
-
-                newMessageRecyclerView.adapter = adapter
             }
 
             override fun onCancelled(p0: DatabaseError) {}

@@ -1,6 +1,7 @@
-package com.example.jeffrey.messenger.model
+package com.example.jeffrey.messenger.view
 
 import com.example.jeffrey.messenger.R
+import com.example.jeffrey.messenger.model.User
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder

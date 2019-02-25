@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.example.jeffrey.messenger.model.DirectMessage
-import com.example.jeffrey.messenger.model.MessageFeedItem
+import com.example.jeffrey.messenger.view.MessageFeedItem
 import com.example.jeffrey.messenger.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*

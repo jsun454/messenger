@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.jeffrey.messenger.model.DirectMessage
-import com.example.jeffrey.messenger.model.ReceivedMessageItem
-import com.example.jeffrey.messenger.model.SentMessageItem
+import com.example.jeffrey.messenger.view.ReceivedMessageItem
+import com.example.jeffrey.messenger.view.SentMessageItem
 import com.example.jeffrey.messenger.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ChildEventListener
@@ -50,7 +50,12 @@ class DirectMessageActivity : AppCompatActivity() {
                     val user = MessageFeedActivity.user ?: return
                     adapter.add(SentMessageItem(message.message, user))
                 } else {
-                    adapter.add(ReceivedMessageItem(message.message, otherUser ?: return))
+                    adapter.add(
+                        ReceivedMessageItem(
+                            message.message,
+                            otherUser ?: return
+                        )
+                    )
                 }
                 activity_direct_message_rv_message_list.scrollToPosition(adapter.itemCount - 1)
             }
