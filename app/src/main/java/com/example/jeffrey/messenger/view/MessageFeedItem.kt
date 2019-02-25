@@ -14,6 +14,8 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.partial_latest_message_row.view.*
 
 class MessageFeedItem(private val message: DirectMessage): Item<ViewHolder>() {
+    var otherUser: User? = null
+
     override fun getLayout(): Int {
         return R.layout.partial_latest_message_row
     }
@@ -29,10 +31,10 @@ class MessageFeedItem(private val message: DirectMessage): Item<ViewHolder>() {
         val ref = FirebaseDatabase.getInstance().getReference("/users/$otherId")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                val otherUser = p0.getValue(User::class.java) ?: return
-                viewHolder.itemView.partial_latest_message_row_txt_username.text = otherUser.username
+                otherUser = p0.getValue(User::class.java) ?: return
+                viewHolder.itemView.partial_latest_message_row_txt_username.text = otherUser?.username
 
-                val uri = otherUser.profileImageUrl
+                val uri = otherUser?.profileImageUrl
                 val targetView = viewHolder.itemView.partial_latest_message_row_img_user_picture
                 Picasso.get().load(uri).fit().into(targetView)
             }

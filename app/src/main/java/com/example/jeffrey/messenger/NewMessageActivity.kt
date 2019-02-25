@@ -29,6 +29,7 @@ class NewMessageActivity : AppCompatActivity() {
         activity_new_message_rv_user_list.adapter = adapter
 
         fetchUsers()
+        setClickListeners()
     }
 
     private fun fetchUsers() {
@@ -39,16 +40,18 @@ class NewMessageActivity : AppCompatActivity() {
                     val user = it.getValue(User::class.java) ?: return@forEach
                     adapter.add(UserItem(user))
                 }
-
-                adapter.setOnItemClickListener { item, view ->
-                    val intent = Intent(view.context, DirectMessageActivity::class.java)
-                    intent.putExtra(USER_KEY, (item as UserItem).user)
-                    startActivity(intent)
-                    finish()
-                }
             }
 
             override fun onCancelled(p0: DatabaseError) {}
         })
+    }
+
+    private fun setClickListeners() {
+        adapter.setOnItemClickListener { item, view ->
+            val intent = Intent(view.context, DirectMessageActivity::class.java)
+            intent.putExtra(USER_KEY, (item as UserItem).user)
+            startActivity(intent)
+            finish()
+        }
     }
 }

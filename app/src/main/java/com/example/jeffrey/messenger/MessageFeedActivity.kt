@@ -36,6 +36,7 @@ class MessageFeedActivity : AppCompatActivity() {
 
         activity_message_feed_rv_message_list.adapter = adapter
         listenForMessages()
+        setClickListeners()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -107,6 +108,15 @@ class MessageFeedActivity : AppCompatActivity() {
         adapter.clear()
         messagesMap.forEach {
             adapter.add(MessageFeedItem(it.value))
+        }
+    }
+
+    private fun setClickListeners() {
+        adapter.setOnItemClickListener { item, view ->
+            val intent = Intent(view.context, DirectMessageActivity::class.java)
+            intent.putExtra(NewMessageActivity.USER_KEY, (item as MessageFeedItem).otherUser)
+            startActivity(intent)
+            finish()
         }
     }
 }
