@@ -116,7 +116,6 @@ class MessageFeedActivity : AppCompatActivity() {
             val intent = Intent(view.context, DirectMessageActivity::class.java)
             intent.putExtra(NewMessageActivity.USER_KEY, (item as MessageFeedItem).otherUser)
             startActivity(intent)
-            finish()
         }
     }
 }
