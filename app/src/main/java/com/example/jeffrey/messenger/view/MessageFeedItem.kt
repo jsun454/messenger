@@ -21,13 +21,16 @@ class MessageFeedItem(private val message: DirectMessage): Item<ViewHolder>() {
     }
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.partial_latest_message_row_txt_message.text = message.message
-
-        val otherId = if(message.fromId == FirebaseAuth.getInstance().uid) {
-            message.toId
+        val otherId: String
+        if(message.fromId == FirebaseAuth.getInstance().uid) {
+            val newMessage = "You: ${message.message}"
+            viewHolder.itemView.partial_latest_message_row_txt_message.text = newMessage
+            otherId = message.toId
         } else {
-            message.fromId
+            viewHolder.itemView.partial_latest_message_row_txt_message.text = message.message
+            otherId = message.fromId
         }
+
         val ref = FirebaseDatabase.getInstance().getReference("/users/$otherId")
         ref.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
