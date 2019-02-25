@@ -73,6 +73,8 @@ class DirectMessageActivity : AppCompatActivity() {
 
         val ref = FirebaseDatabase.getInstance().getReference("/messages/$fromId/$toId").push()
         val otherRef = FirebaseDatabase.getInstance().getReference("/messages/$toId/$fromId").push()
+        val latestRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+        val otherLatestRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
 
         val message = DirectMessage(ref.key!!, fromId, toId, text, System.currentTimeMillis())
 
@@ -87,13 +89,9 @@ class DirectMessageActivity : AppCompatActivity() {
             }
 
         otherRef.setValue(message)
-            .addOnSuccessListener {
-                Log.i(TAG, "Successfully saved message to database")
-                activity_direct_message_et_user_message.text.clear()
-                activity_direct_message_rv_message_list.scrollToPosition(adapter.itemCount - 1)
-            }
-            .addOnFailureListener {
-                Log.e(TAG, "Failed to save message to database: ${it.message}")
-            }
+
+        latestRef.setValue(message)
+
+        otherLatestRef.setValue(message)
     }
 }

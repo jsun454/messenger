@@ -15,7 +15,8 @@ class ReceivedMessageItem(private val message: String, private val user: User): 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.partial_received_message_row_other_user_message.text = message
         val uri = user.profileImageUrl
-        Picasso.get().load(uri).fit().into(viewHolder.itemView.partial_received_message_row_other_user_image)
+        val targetView = viewHolder.itemView.partial_received_message_row_other_user_image
+        Picasso.get().load(uri).fit().into(targetView)
     }
 }
 
@@ -27,6 +28,7 @@ class SentMessageItem(private val message: String, private val user: User): Item
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.partial_sent_message_row_user_message.text = message
         val uri = user.profileImageUrl
-        Picasso.get().load(uri).fit().into(viewHolder.itemView.partial_sent_message_row_user_image)
+        val targetView = viewHolder.itemView.partial_sent_message_row_user_image
+        Picasso.get().load(uri).fit().into(targetView)
     }
 }

@@ -2,6 +2,7 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="horizontal"
         android:gravity="start|center_vertical"
         android:layout_width="match_parent"
@@ -9,7 +10,6 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/partial_latest_message_row_img_user_picture"
-            android:background="@drawable/btn_circle_dark_blue"
             android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -17,7 +17,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             app:civ_border_width="2dp"
-            app:civ_border_color="@color/colorAccent"/>
+            app:civ_border_color="@color/colorAccent"
+            tools:background="@drawable/btn_circle_dark_blue"/>
 
     <LinearLayout
             android:orientation="vertical"
@@ -30,23 +31,23 @@
 
         <TextView
                 android:id="@+id/partial_latest_message_row_txt_username"
-                android:text="John Howard"
                 android:textSize="16sp"
                 android:textColor="@color/textColorPrimary"
                 android:textStyle="bold"
                 android:layout_marginBottom="4dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:text="User Name"/>
 
         <TextView
                 android:id="@+id/partial_latest_message_row_txt_message"
-                android:text="Hello I am a really really long message that will wrap onto the second line"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textSize="16sp"
                 android:textColor="@color/textColorGray"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:text="Sample message that is really long and ellipsizes at the end"/>
 
     </LinearLayout>
 
