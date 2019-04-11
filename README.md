@@ -1,2 +1,2 @@
 # messenger
-Basic messenger app for Android using Firebase
+Messenger app for Android using Firebase
